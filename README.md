@@ -1,5 +1,8 @@
 # Fashion-MNIST Image Classification: ANN vs CNN vs ResNet50
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://fashion-classifier-5esprsdq2sikwhbijfuzsf.streamlit.app/)
+**Live Demo:** [fashion-classifier-5esprsdq2sikwhbijfuzsf.streamlit.app](https://fashion-classifier-5esprsdq2sikwhbijfuzsf.streamlit.app/)
+
 Classifies 28×28 grayscale clothing images into 10 classes and compares three model families,
 each tuned with techniques that suit it. The best model (a CNN) is served in a **Streamlit app**
 where anyone can upload an image and get a prediction.
@@ -27,7 +30,7 @@ Plots and tables are in [`results/`](results/) after you run `python -m src.eval
 
 ```
 fashion-mnist-classifier/
-├── app.py                  # Streamlit app
+├── app.py                  # Streamlit web app
 ├── src/
 │   ├── config.py           # paths, constants, class names
 │   ├── data.py             # load + split Fashion-MNIST
@@ -39,7 +42,7 @@ fashion-mnist-classifier/
 ├── results/                # metrics, reports and plots
 │   └── images/
 ├── notebooks/
-│   └── Fashion_MNIST.ipynb # original exploration and experiments
+│   └── Fashion_MNIST.ipynb # interactive exploration, training & export
 ├── tests/
 │   └── test_preprocess.py
 └── requirements.txt
@@ -49,18 +52,31 @@ fashion-mnist-classifier/
 
 ```bash
 pip install -r requirements.txt
+```
 
-# 1. Train (from the project root)
-python -m src.train --model cnn                 # or: ann, resnet50, all
-python -m src.train --model ann --tune-dropout  # pick ANN dropout on validation data
+### 1. Training the Models (Choose CLI or Notebook)
 
-# 2. Compare models and analyse the best one
+* **Option A: Via Jupyter Notebook**
+  Open [`notebooks/Fashion_MNIST.ipynb`](notebooks/Fashion_MNIST.ipynb). Running the cells sequentially will perform EDA, data preprocessing, train the ANN, CNN, and ResNet50 models, and automatically save the trained `.keras` model weights into the `models/` directory.
+
+* **Option B: Via Command Line**
+  ```bash
+  python -m src.train --model cnn                 # or: ann, resnet50, all
+  python -m src.train --model ann --tune-dropout  # pick ANN dropout on validation data
+  ```
+
+### 2. Compare models and analyse the best one
+```bash
 python -m src.evaluate
+```
 
-# 3. Launch the app
+### 3. Launch the Streamlit app locally
+```bash
 streamlit run app.py
+```
 
-# 4. Tests
+### 4. Run tests
+```bash
 pytest
 ```
 
@@ -76,6 +92,7 @@ model sees, the top 3 predictions and a warning when confidence is low.
 Limitations: only the 10 Fashion-MNIST classes are known, so unrelated objects are still assigned
 one of them. It works best on a single item against a plain background.
 
-## Deploy
+## Live Deployment
 
-Push this repo to GitHub, then create an app at https://share.streamlit.io with `app.py` as the main file.
+The app is live and hosted on Streamlit Community Cloud:
+🔗 **[https://fashion-classifier-5esprsdq2sikwhbijfuzsf.streamlit.app/](https://fashion-classifier-5esprsdq2sikwhbijfuzsf.streamlit.app/)**
