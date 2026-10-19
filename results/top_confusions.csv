@@ -1,0 +1,9 @@
+True class,Predicted as,Count
+T-shirt/top,Shirt,114
+Shirt,T-shirt/top,79
+Shirt,Coat,67
+Coat,Shirt,60
+Pullover,Shirt,48
+Shirt,Pullover,46
+Ankle boot,Sneaker,44
+Dress,Shirt,33
