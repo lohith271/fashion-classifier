@@ -1,0 +1,4 @@
+Model,Key,Val Accuracy (%),Test Accuracy (%),Test Loss,Parameters,Train Time (s)
+CNN,cnn,93.47,92.25,0.2059,305578,430
+ANN,ann,91.47,90.33,0.2965,570122,52
+ResNet50,resnet50,90.93,90.25,0.2857,23851274,298
